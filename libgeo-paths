@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH="$(pwd)/geosupport/version-17a_17.1/lib/"
+export GEOFILES="$(pwd)/geosupport/version-17a_17.1/fls/"
+export LIBGEO_PATH="$(pwd)/geosupport/version-17a_17.1/lib/libgeo.so"
+
+
+
+
+
