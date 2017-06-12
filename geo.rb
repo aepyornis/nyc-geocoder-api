@@ -14,6 +14,7 @@ module Geo
     end
   end
 
+  # Str -> Hash | Str
   def self.address_to_geo_params(str_address)
     address = parse_address(str_address)
     if address.key?(:house_number) && address.key?(:road) && address.key?(:postcode)
@@ -27,7 +28,7 @@ module Geo
     end
   end
 
-  # Hash -> str
+  # Hash -> Str
   def self.bbl_hash_to_bbl(h)
     h[:borough] + h[:block] + h[:lot]
   end
@@ -46,17 +47,17 @@ module Geo
   def self.geocode(params)
     res = parse_params(params)
     if res.is_a? String
-      puts 'is a string'
       ERROR_HASH.merge(message: res)
     else
       geosupport(res)
     end
   end
 
+  # Hash -> Hash
   def self.geosupport(geo_params)
     GEOSUPPORT.run(geo_params)
 
-    # if gecoodng is a success:
+    # if geocoding is a success:
     if GEOSUPPORT.response[:work_area_1][:geosupport_return_code] == '00'
       response(GEOSUPPORT.response[:work_area_2])
     elsif GEOSUPPORT.response[:work_area_1][:message]
@@ -74,10 +75,9 @@ module Geo
   #  - house, street, zip (or zipcode)
   #  - address (will attempt to parse into house, street, zip)
   # Returns Hash or String
-  # If it returns a String then it's a error mssage
+  # If it returns a String then it's a error message
   def self.parse_params(params)
-    return parse_address(params['address']) if params['address']
-    # puts (params['house'].present? && params['street'].present?)
+    return address_to_geo_params(params['address']) if params['address'].present?
     return "Missing required parameters" unless (params['house'].present? && params['street'].present?)
     boro = boro_param(params)
     zip = zip_param(params)
@@ -101,12 +101,14 @@ module Geo
     end
   end
 
+  # Hash -> Str | Nil
   private_class_method def self.boro_param(params)
     if params['borough'] || params['boro']
       (params['borough'] || params['boro']).upcase
     end
   end
 
+  # Hash -> Str | Nil
   private_class_method def self.zip_param(params)
     params['zip'] || params['zipcode']
   end

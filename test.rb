@@ -9,6 +9,14 @@ RSpec.describe Geo do
     end
   end
 
+  describe 'address_to_geo_params' do
+    it 'turns valid address with house, street, and zip to geo params' do
+      address = "1000 Surf Avenue Brooklyn, NY 11224"
+      geo_params = { house_number_display_format: '1000', street_name1: 'surf avenue', zip_code_input: '11224'}
+      expect(Geo.address_to_geo_params(address)).to eq geo_params
+    end
+  end
+
   describe 'response' do
     it 'returns response hash' do
       wa2 = { bbl: bbl_hash, latitude: 10, longitude: 20 }

@@ -3,5 +3,5 @@ require './geo.rb'
 
 get '/' do
   content_type :json
-  geocode(params)
+  Geo.geocode(params).to_json
 end
