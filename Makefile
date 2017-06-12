@@ -1,6 +1,6 @@
 GEOSUPPORT_PATH := geosupport
-LIBPOSTAL_INSTALL_DIR := $(HOME)/.libpostal
-LIBPOSTAL_DATA_DIR := $(LIBPOSTAL_INSTALL_DIR)/data
+LIBPOSTAL_INSTALL_DIR ?= $(HOME)/.libpostal
+LIBPOSTAL_DATA_DIR ?= $(LIBPOSTAL_INSTALL_DIR)/data
 
 setup: geosupport gdelx_17a.zip version-17a_17.1
 
