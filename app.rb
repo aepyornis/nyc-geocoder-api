@@ -1,7 +1,10 @@
 require 'sinatra'
 require './geo.rb'
 
-get '/' do
-  content_type :json
-  Geo.geocode(params).to_json
+class NycGeocodeApi < Sinatra::Base
+  get '/' do
+    content_type :json
+    Geo.geocode(params).to_json
+  end
 end
+
