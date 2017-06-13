@@ -3,8 +3,10 @@
 A simple geocoder for NYC. Similar to the NYC's official [geoclient api](https://developer.cityofnewyork.us/api/geoclient-api), but with far fewer bells and whistles.
 
 All the heavy lifting is done by:
-	- [@jordanderson](https://github.com/jordanderson)'s [ruby binding](https://github.com/jordanderson/nyc_geosupport) to City Planning's [geosupport](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-gde-home.page)
-	- Mapzen's libpostal
+
+- [@jordanderson](https://github.com/jordanderson)'s [ruby binding](https://github.com/jordanderson/nyc_geosupport) to City Planning's [geosupport](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-gde-home.page)
+
+- Mapzen's [libpostal](https://github.com/openvenues/libpostal)
 
 ## How to use
 
@@ -79,20 +81,20 @@ make setup libpostal
 bundle install
 ```
 
-** Setup geosupport paths **
+**Setup geosupport paths**
 
 ``` sh
 source libgeo-paths 
 ```
 
-** Run: **
+**Run:**
 
 ``` sh
 ruby app.rb
 ```
 
 
-** Run the tests: **
+**Run the tests:**
 
 ``` sh
 rspec test.rb
