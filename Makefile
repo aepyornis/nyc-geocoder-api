@@ -2,16 +2,16 @@ GEOSUPPORT_PATH := geosupport
 LIBPOSTAL_INSTALL_DIR ?= $(HOME)/.libpostal
 LIBPOSTAL_DATA_DIR ?= $(LIBPOSTAL_INSTALL_DIR)/data
 
-setup: $(GEOSUPPORT_PATH) $(GEOSUPPORT_PATH)/gdelx_17a.zip $(GEOSUPPORT_PATH)/version-17a_17.1
+setup: $(GEOSUPPORT_PATH) $(GEOSUPPORT_PATH)/gdelx_17d.zip $(GEOSUPPORT_PATH)/version-17d_17.4
 
 $(GEOSUPPORT_PATH):
 	mkdir -v -p $(GEOSUPPORT_PATH)
 
-$(GEOSUPPORT_PATH)/gdelx_17a.zip:
-	wget http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_17a.zip -O $(GEOSUPPORT_PATH)/gdelx_17a.zip
+$(GEOSUPPORT_PATH)/gdelx_17d.zip:
+	wget http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_17d.zip -O $(GEOSUPPORT_PATH)/gdelx_17d.zip
 
-$(GEOSUPPORT_PATH)/version-17a_17.1: 
-	cd $(GEOSUPPORT_PATH) && unzip gdelx_17a.zip
+$(GEOSUPPORT_PATH)/version-17d_17.4:
+	cd $(GEOSUPPORT_PATH) && unzip gdelx_17d.zip
 
 libpostal: libpostal_packages $(LIBPOSTAL_INSTALL_DIR) $(LIBPOSTAL_DATA_DIR)
 	$(MAKE) $(LIBPOSTAL_INSTALL_DIR)/libpostal
