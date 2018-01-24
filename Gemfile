@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'sinatra'
 gem 'ruby_postal'
+gem 'thin'
 
 gem "nyc_geosupport",
     :git => "https://github.com/jordanderson/nyc_geosupport",
